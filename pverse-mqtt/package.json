@@ -1,0 +1,38 @@
+{
+    "name": "pverse-mqtt",
+    "version": "1.0.0",
+    "private": true,
+    "description": "A Simple IoT Platform - MQTT Server",
+    "main": "server.js",
+    "scripts": {
+        "start": "NODE_ENV=production node server.js",
+        "start-win": "SET NODE_ENV=production&&node server.js",
+        "start-dev": "DEBUG=pverse:* nodemon server.js",
+        "start-dev-win": "SET DEBUG=pverse:*&&nodemon server.js",
+        "lint": "standard",
+        "lint-fix": "standard --fix"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/fyupanquia/pverse.git"
+    },
+    "author": "cmb",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/fyupanquia/pverse/issues"
+    },
+    "homepage": "https://github.com/fyupanquia/pverse#readme",
+    "devDependencies": {
+        "mqtt": "^4.1.0",
+        "nodemon": "^2.0.4",
+        "standard": "^14.3.4"
+    },
+    "dependencies": {
+        "chalk": "^4.1.0",
+        "debug": "^4.1.1",
+        "mosca": "^2.8.3",
+        "pverse-db": "file:../pverse-db",
+        "pverse-utils": "file:../pverse-utils",
+        "redis": "^3.0.2"
+    }
+}

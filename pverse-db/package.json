@@ -1,5 +1,5 @@
 {
-  "name": "platziverse-db",
+  "name": "pverse-db",
   "version": "1.0.0",
   "description": "A Simple IoT Platform - DB Module",
   "main": "index.js",
@@ -15,14 +15,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/platzi/pverse.git"
+    "url": "git+https://github.com/fyupanquia/pverse.git"
   },
-  "author": "Julian Duque <julianduquej@gmail.com>",
+  "author": "cmb",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/platzi/platziverse/issues"
+    "url": "https://github.com/fyupanquia/pverse/issues"
   },
-  "homepage": "https://github.com/platzi/platziverse#readme",
+  "homepage": "https://github.com/fyupanquia/pverse#readme",
   "devDependencies": {
     "ava": "^3.8.2",
     "chalk": "^4.1.0",

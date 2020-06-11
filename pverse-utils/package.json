@@ -1,0 +1,27 @@
+{
+  "name": "pverse-utils",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "standard",
+    "lint-fix": "standard --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fyupanquia/pverse.git"
+  },
+  "author": "cmb",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fyupanquia/pverse/issues"
+  },
+  "homepage": "https://github.com/fyupanquia/pverse#readme",
+  "devDependencies": {
+    "standard": "^14.3.4"
+  },
+  "dependencies": {
+    "debug": "^4.1.1"
+  }
+}
