@@ -5,7 +5,7 @@ const mosca = require('mosca')
 const redis = require('redis')
 const chalk = require('chalk')
 const db = require('pverse-db')
-const pu = require('pverse-utils')
+const { db: { config } } = require('pverse-utils')
 
 const { parsePayload } = require('./utils')
 
@@ -23,7 +23,7 @@ const settings = {
 let Agent, Metric
 const clients = new Map()
 
-const config = Object.assign(pu.db.config, { logging: (s) => debug(s) })
+const dbconfig = Object.assign(config, { logging: (s) => debug(s) });
 const server = new mosca.Server(settings)
 
 server.on('clientConnected', (client) => {
@@ -120,7 +120,7 @@ server.on('published', async (packet, client) => {
 })
 
 server.on('ready', async () => {
-  const services = await db(config).catch(handleFatalError)
+  const services = await db(dbconfig).catch(handleFatalError);
 
   Agent = services.Agent
   Metric = services.Metric

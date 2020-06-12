@@ -1,0 +1,45 @@
+{
+  "name": "pverse-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A Simple IoT Platform - API",
+  "main": "server.js",
+  "scripts": {
+    "start": "NODE_ENV=production node server.js",
+    "start-win": "SET NODE_ENV=production&&node server.js",
+    "start-dev": "DEBUG=pverse:* nodemon server.js",
+    "start-dev-win": "SET DEBUG=pverse:*&&nodemon server.js",
+    "lint": "standard",
+    "lint-fix": "standard --fix",
+    "test": "DEBUG=pverse:* ava tests/ --verbose",
+    "test-win": "SET DEBUG=pverse:*&&ava tests/* --verbose",
+    "test-coverage-report-win": "SET DEBUG=pverse:*&&nyc --reporter=lcov ava tests/* --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fyupanquia/pverse.git"
+  },
+  "author": "Frank Yupanqui Allcca <fyupanquia@outlook.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fyupanquia/pverse/issues"
+  },
+  "homepage": "https://github.com/fyupanquia/pverse#readme",
+  "devDependencies": {
+    "ava": "^3.8.2",
+    "express-asyncify": "^1.0.1",
+    "nodemon": "^2.0.4",
+    "nyc": "^15.1.0",
+    "proxyquire": "^2.1.3",
+    "sinon": "^9.0.2",
+    "standard": "^14.3.4",
+    "supertest": "^4.0.2"
+  },
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "debug": "^4.1.1",
+    "express": "^4.17.1",
+    "pverse-db": "file:../pverse-db",
+    "pverse-utils": "file:../pverse-utils"
+  }
+}

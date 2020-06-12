@@ -1,9 +1,4 @@
-# pverse-agent
-
-## Usage
-
-``` js
-const PverseAgent = require('pverse-agent')
+const PverseAgent = require('../')
 
 const agent = new PverseAgent({
   name: 'myapp',
@@ -38,8 +33,7 @@ agent.on('agent/disconnected', handler)
 agent.on('agent/message', handler)
 
 function handler (payload) {
-  console.log(payload)
+  console.log('handler: ', payload)
 }
 
-setTimeout(() => agent.disconnect(), 20000)
-```
+setTimeout(() => agent.disconnect(), 10000)
