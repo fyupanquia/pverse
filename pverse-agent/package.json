@@ -1,12 +1,11 @@
 {
-  "name": "pverse-utils",
+  "name": "pverse-agent",
   "version": "1.0.0",
   "private": true,
-  "description": "",
+  "description": "A Simple IoT Platform - Agent",
   "main": "index.js",
   "scripts": {
-    "lint": "standard",
-    "lint-fix": "standard --fix"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -17,11 +16,5 @@
   "bugs": {
     "url": "https://github.com/fyupanquia/pverse/issues"
   },
-  "homepage": "https://github.com/fyupanquia/pverse#readme",
-  "devDependencies": {
-    "standard": "^14.3.4"
-  },
-  "dependencies": {
-    "debug": "^4.1.1"
-  }
+  "homepage": "https://github.com/fyupanquia/pverse#readme"
 }
