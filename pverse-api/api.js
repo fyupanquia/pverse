@@ -3,7 +3,9 @@ const debug = require('debug')('pverse:api:routes')
 const express = require('express')
 const asyncify = require('express-asyncify')
 const db = require('pverse-db')
-const { db: { config } } = require('pverse-utils')
+const auth = require('express-jwt')
+const guard = require("express-jwt-permissions")();
+const { db: { config }, auth: { secret } } = require('pverse-utils')
 
 const api = asyncify(express.Router())
 
@@ -11,7 +13,6 @@ let services, Agent, Metric
 
 const dbconfig = Object.assign(config, { logging: (s) => debug(s) })
 api.use('*', async (req, res, next) => {
-  
   if (!services) {
     debug('Connecting to database')
     try {
@@ -20,82 +21,92 @@ api.use('*', async (req, res, next) => {
       return next(e)
     }
 
-    Agent = services.Agent;
-    Metric = services.Metric;
+    Agent = services.Agent
+    Metric = services.Metric
   }
   next()
 })
 
-api.get("/agents", async (req, res, next) => {
-  debug("A request has come to /agents");
+api.get('/agents', auth({ secret }), async (req, res, next) => {
+  debug('A request has come to /agents')
 
-  let agents = [];
-  try {
-    agents = await Agent.findConnected();
-  } catch (e) {
-    return next(e);
+  const { user } = req
+  console.log(user)
+  if (!user || !user.username) {
+    return next(new Error('Not authorized'))
   }
 
-  res.send(agents);
-});
-
-api.get("/agent/:uuid", async (req, res, next) => {
-  const { uuid } = req.params;
-
-  debug(`request to /agent/${uuid}`);
-
-  let agent;
+  let agents = []
   try {
-    agent = await Agent.findByUuid(uuid);
+    if (user.admin) {
+      agents = await Agent.findConnected()
+    } else {
+      agents = await Agent.findByUsername(user.username)
+    }
   } catch (e) {
-    return next(e);
+    return next(e)
+  }
+
+  res.send(agents)
+})
+
+api.get('/agent/:uuid', async (req, res, next) => {
+  const { uuid } = req.params
+
+  debug(`request to /agent/${uuid}`)
+
+  let agent
+  try {
+    agent = await Agent.findByUuid(uuid)
+  } catch (e) {
+    return next(e)
   }
 
   if (!agent) {
-    return next(new Error(`Agent not found with uuid ${uuid}`));
+    return next(new Error(`Agent not found with uuid ${uuid}`))
   }
 
-  res.send(agent);
-});
+  res.send(agent)
+})
 
-api.get("/metrics/:uuid", async (req, res, next) => {
-  const { uuid } = req.params;
+api.get('/metrics/:uuid',auth({ secret }), guard.check(['metrics:read']), async (req, res, next) => {
+  const { uuid } = req.params
 
-  debug(`request to /metrics/${uuid}`);
+  debug(`request to /metrics/${uuid}`)
 
-  let metrics = [];
+  let metrics = []
   try {
-    metrics = await Metric.findByAgentUuid(uuid);
+    metrics = await Metric.findByAgentUuid(uuid)
   } catch (e) {
-    return next(e);
+    return next(e)
   }
 
   if (!metrics || metrics.length === 0) {
-    return next(new Error(`Metrics not found for agent with uuid ${uuid}`));
+    return next(new Error(`Metrics not found for agent with uuid ${uuid}`))
   }
 
-  res.send(metrics);
-});
+  res.send(metrics)
+})
 
-api.get("/metrics/:uuid/:type", async (req, res, next) => {
-  const { uuid, type } = req.params;
+api.get('/metrics/:uuid/:type', async (req, res, next) => {
+  const { uuid, type } = req.params
 
-  debug(`request to /metrics/${uuid}/${type}`);
+  debug(`request to /metrics/${uuid}/${type}`)
 
-  let metrics = [];
+  let metrics = []
   try {
-    metrics = await Metric.findByTypeAgentUuid(type, uuid);
+    metrics = await Metric.findByTypeAgentUuid(type, uuid)
   } catch (e) {
-    return next(e);
+    return next(e)
   }
 
   if (!metrics || metrics.length === 0) {
     return next(
       new Error(`Metrics (${type}) not found for agent with uuid ${uuid}`)
-    );
+    )
   }
 
-  res.send(metrics);
-});
+  res.send(metrics)
+})
 
-module.exports = api;
+module.exports = api

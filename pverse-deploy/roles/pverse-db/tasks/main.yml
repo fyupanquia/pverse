@@ -1,0 +1,14 @@
+---
+- include: deps.yml
+- name: Copy pverse-db
+  copy:
+    src=pverse-db
+    dest=/usr/local/src
+    mode=u=rwx,g=rwx,o=rx
+- name: Run npm install
+  command: npm install
+    chdir=/usr/local/src/pverse-db
+    creates=/usr/local/src/pverse-db/node_modules
+- name: Setup Database
+  command: npm run setup -- --yes
+    chdir=/usr/local/src/pverse-db

@@ -1,0 +1,63 @@
+{
+  "name": "pverse-web",
+  "version": "1.0.0",
+  "description": "A Simple IoT Platform - Web Dashboard",
+  "main": "server.js",
+  "scripts": {
+    "prestart": "npm run build",
+    "prestart:dev": "npm run build-dev",
+    "prestart:dev:watch": "npm run build",
+    "start": "NODE_ENV=production node server.js",
+    "start-dev": "DEBUG=pverse:* nodemon server.js",
+    "start-dev-win": "SET DEBUG=pverse:*&&nodemon server.js",
+    "lint": "standard",
+    "lint-fix": "standard --fix",
+    "build": "NODE_ENV=production&&webpack --config webpack.config.js",
+    "build-dev-win": "webpack --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fyupanquia/pverse.git"
+  },
+  "author": "Frank Yupanqui Allcca <fyupanquia@outlook.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fyupanquia/pverse/issues"
+  },
+  "homepage": "https://github.com/fyupanquia/pverse#readme",
+  "devDependencies": {
+    "nodemon": "^1.11.0",
+    "standard": "^10.0.3",
+    "webpack-cli": "^3.3.11"
+  },
+  "dependencies": {
+    "@babel/core": "^7.10.2",
+    "babel-loader": "^8.1.0",
+    "chalk": "^2.1.0",
+    "chart.js": "^2.9.3",
+    "css-loader": "^3.6.0",
+    "debug": "^3.0.0",
+    "express": "^4.15.4",
+    "express-asyncify": "^1.0.1",
+    "moment": "^2.26.0",
+    "pverse-agent": "file:../pverse-agent",
+    "pverse-utils": "file:../pverse-utils",
+    "random-material-color": "^1.0.5",
+    "request": "^2.88.2",
+    "request-promise-native": "^1.0.8",
+    "socket.io": "^2.3.0",
+    "terser-webpack-plugin": "^3.0.5",
+    "vue": "^2.6.11",
+    "vue-chartjs": "^3.5.0",
+    "vue-loader": "^15.9.2",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.6.11",
+    "vue-template-loader": "^1.1.0",
+    "webpack": "^4.43.0"
+  },
+  "standard": {
+    "ignore": [
+      "/public/bundle.js"
+    ]
+  }
+}

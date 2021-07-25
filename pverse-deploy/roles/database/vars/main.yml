@@ -1,0 +1,12 @@
+postgresql_databases:
+  - name: pverse
+    owner: admin
+    hstore: yes
+postgresql_users:
+  - name: admin
+    pass: admin
+    encrypted: no
+postgresql_user_privileges:
+  - name: admin
+    db: pverse
+    priv: "ALL"

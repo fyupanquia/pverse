@@ -1,0 +1,30 @@
+{
+  "name": "pverse-agent",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A Simple IoT Platform - Agent",
+  "main": "index.js",
+  "scripts": {
+    "lint": "standard",
+    "lint-fix": "standard --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fyupanquia/pverse.git"
+  },
+  "author": "Frank Yupanqui Allcca <fyupanquia@outlook.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fyupanquia/pverse/issues"
+  },
+  "homepage": "https://github.com/fyupanquia/pverse#readme",
+  "devDependencies": {
+    "standard": "^14.3.4"
+  },
+  "dependencies": {
+    "defaults": "^1.0.3",
+    "mqtt": "^4.1.0",
+    "uuid": "^8.1.0",
+    "pverse-utils": "file:../pverse-utils"
+  }
+}

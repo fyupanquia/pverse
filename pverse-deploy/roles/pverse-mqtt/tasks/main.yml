@@ -1,0 +1,20 @@
+---
+- include: deps.yml
+- name: Copying pverse-mqtt
+  copy:
+    src=pverse-mqtt
+    dest=/usr/local/src
+    mode=u=rwx,g=rwx,o=rx
+- name: Running npm install
+  command: npm install
+    chdir=/usr/local/src/pverse-mqtt
+    creates=/usr/local/src/pverse-mqtt/node_modules
+- name: Install systemd script
+  copy:
+    src=pverse-mqtt.service
+    dest=/lib/systemd/system
+- name: Start pverse-mqtt
+  service:
+    name=pverse-mqtt
+    state=restarted
+    enabled=yes

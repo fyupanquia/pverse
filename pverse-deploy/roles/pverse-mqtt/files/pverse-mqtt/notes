@@ -1,0 +1,5 @@
+C:\Program Files\nodejs\mqtt_pub -> C:\Program Files\nodejs\node_modules\mqtt\bin\pub.js
+C:\Program Files\nodejs\mqtt -> C:\Program Files\nodejs\node_modules\mqtt\bin\mqtt.js
+C:\Program Files\nodejs\mqtt_sub -> C:\Program Files\nodejs\node_modules\mqtt\bin\sub.js
+
+> mqtt_pub  -t 'agent/message' -h localhost:1883 -m '{"hello" : "pverse"}'

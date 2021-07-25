@@ -1,0 +1,11 @@
+---
+- include: deps.yml
+- name: Copy pverse-agent
+  copy:
+    src=pverse-agent
+    dest=/usr/local/src
+    mode=u=rwx,g=rwx,o=rx
+- name: Run npm install
+  command: npm install
+    chdir=/usr/local/src/pverse-agent
+    creates=/usr/local/src/pverse-agent/node_modules

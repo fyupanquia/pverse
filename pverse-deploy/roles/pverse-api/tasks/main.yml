@@ -1,0 +1,29 @@
+  
+---
+- include: deps.yml
+- name: Copying pverse-api
+  copy:
+    src=pverse-api
+    dest=/usr/local/src
+    mode=u=rwx,g=rwx,o=rx
+- name: Running npm install
+  command: npm install
+    chdir=/usr/local/src/pverse-api
+    creates=/usr/local/src/pverse-api/node_modules
+- name: Install systemd script
+  copy:
+    src=pverse-api.service
+    dest=/lib/systemd/system
+- name: Install nginx config
+  copy:
+    src=pverse-api.conf
+    dest=/etc/nginx/sites-enabled
+- name: Start pverse-api
+  service:
+    name=pverse-api
+    state=restarted
+    enabled=yes
+- name: Restart nginx
+  service:
+    name=nginx
+    state=reloaded

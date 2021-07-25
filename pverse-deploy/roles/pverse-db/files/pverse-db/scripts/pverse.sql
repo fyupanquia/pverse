@@ -1,0 +1,3 @@
+-- CREATE DATABASE pverse;
+-- CREATE ROLE pverse WITH LOGIN PASSWORD 'pverse';
+-- GRANT ALL PRIVILEGES ON DATABASE pverse TO pverse;

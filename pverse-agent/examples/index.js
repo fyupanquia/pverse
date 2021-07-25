@@ -1,10 +1,13 @@
 const PverseAgent = require('../')
 
 const agent = new PverseAgent({
-  name: 'myapp',
-  username: 'admin',
-  interval: 2000
-})
+  name: "myapp",
+  username: "admin",
+  interval: 2000,
+  //mqtt: {
+  //  host: 'mqtt://localhost:1813',
+  //},
+});
 
 agent.addMetric('rss', function getRss () {
   return process.memoryUsage().rss
@@ -36,4 +39,4 @@ function handler (payload) {
   console.log('handler: ', payload)
 }
 
-setTimeout(() => agent.disconnect(), 10000)
+//setTimeout(() => agent.disconnect(), 10000)

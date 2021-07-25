@@ -1,0 +1,29 @@
+{
+  "name": "pverse-cli",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A Simple IoT Platform - CLI",
+  "bin": "index.js",
+  "scripts": {
+    "lint": "standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fyupanquia/pverse.git"
+  },
+  "author": "Frank Yupanqui Allcca <fyupanquia@outlook.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fyupanquia/pverse/issues"
+  },
+  "homepage": "https://github.com/fyupanquia/pverse#readme",
+  "devDependencies": {
+    "standard": "^10.0.3"
+  },
+  "dependencies": {
+    "blessed": "^0.1.81",
+    "blessed-contrib": "^4.7.5",
+    "moment": "^2.26.0",
+    "pverse-agent": "file:../pverse-agent"
+  }
+}

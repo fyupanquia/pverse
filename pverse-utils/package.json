@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/fyupanquia/pverse#readme",
   "devDependencies": {
+    "chalk": "^4.1.0",
     "standard": "^14.3.4"
   },
   "dependencies": {
