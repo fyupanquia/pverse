@@ -33,6 +33,6 @@
         "mosca": "^2.8.3",
         "pverse-db": "file:../pverse-db",
         "pverse-utils": "file:../pverse-utils",
-        "redis": "^3.0.2"
+        "redis": "^3.1.1"
     }
 }
